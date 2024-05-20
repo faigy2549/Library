@@ -1,0 +1,42 @@
+{%extends 'layout.html' %}
+
+{%block title_block %}
+library
+{%endblock%}
+
+{%block body_block %}
+<h4>My Barrowed Books</h4>
+
+<table>
+    <thead>
+     <th>Name</th>
+     <th>Category</th>
+    </thead>
+   {% for book in books %}
+   <tr>
+       <td>{{book.BookId.BookName}}</td>
+       <td>{{book.BookId.CategoryName_id}}</td>
+       <td>
+                  <td>
+       {%if book.BookId.Is_barrowed == True %}
+       <td>
+           <h4>
+<form action="{%url 'return' book.BookId.BookName%}" method="post">
+  {% csrf_token %}
+  {{form.as_p}}
+  <button type="submit">Return</button>
+</form>
+           </h4>
+  </td>
+       {%elif user is not None and book.BookId.Is_barrowed == False%}
+           <td style="color:#023047"><h4>Returned</h4></td>
+       {%endif%}
+
+      </td>
+</td>
+   </tr>
+    {% endfor %}
+</table>
+
+
+{%endblock%}

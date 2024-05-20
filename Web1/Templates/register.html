@@ -1,0 +1,40 @@
+{%extends 'layout.html' %}
+
+{%block title_block %}
+Add New Person
+{%endblock%}
+
+{%block body_block %}
+<h2>Register</h2>
+
+<form action="" method="post">
+  {% csrf_token %}
+    <label>First Name</label>
+  <input type="text" name="fname"/>
+    <br>
+     <br>
+       <label>Last Name</label>
+  <input type="text" name ="lname"/>
+     <br>
+     <br>
+    <label>Address</label>
+  <input type="text" name="address"/>
+     <br>
+     <br>
+    <label>Birth Date</label>
+   <input type="date" name="bday"/>
+     <br>
+     <br>
+    <label>Phone Number</label>
+   <input type="number" name="phoneNumber"/>
+     <br>
+     <br>
+    <label>Password</label>
+  <input type="password" name ="password"/>
+     <br>
+     <br>
+  <button type="submit">Add</button>
+</form>
+
+
+{%endblock%}

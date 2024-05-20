@@ -1,0 +1,16 @@
+{%extends 'layout.html' %}
+
+{%block title_block %}
+Login To Library
+{%endblock%}
+
+{%block body_block %}
+<h2>Login</h2>
+
+<form action="" method="post">
+  {% csrf_token %}
+  {{form.as_p}}
+  <button type="submit">Login</button>
+</form>
+
+{%endblock%}

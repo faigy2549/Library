@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+<h1>Overdue Books</h1>
+    <ul>
+        {% for b in books %}
+            <li>{{b.BookId.BookName}}: User {{ b.UserId}} was supposed to be return by {{b.ReturnDate}}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

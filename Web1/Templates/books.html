@@ -1,0 +1,30 @@
+{%extends 'layout.html' %}
+
+{%block title_block %}
+library
+{%endblock%}
+
+{%block body_block %}
+<h4>To Borrow books you must sign in</h4>
+<a href="login">Login</a>
+<br>
+<br>
+<a href="register">Register if you aren't signed up</a>
+<br><br>
+<table>
+    <thead>
+     <th>Name</th>
+     <th>Category</th>
+    </thead>
+   {% for book in books %}
+   <tr>
+       <td>{{book.BookName}}</td>
+       <td>{{book.CategoryName_id}}</td>
+       <td>
+</td>
+   </tr>
+    {% endfor %}
+</table>
+
+
+{%endblock%}

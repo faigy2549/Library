@@ -1,0 +1,44 @@
+{%extends 'layout.html' %}
+
+{%block title_block %}
+library
+{%endblock%}
+
+{%block body_block %}
+<a href="myBooks">Borrowed Books</a>
+
+{%if admin == 1 %}
+<a href="manage">Overdue Books</a>
+{%endif%}
+<table>
+    <thead>
+     <th>Name</th>
+     <th>Category</th>
+    <th>Barrow</th>
+    </thead>
+   {% for book in books %}
+   <tr>
+       <td>{{book.BookName}}</td>
+       <td>{{book.CategoryName_id}}</td>
+       <td>
+           {%if book.Is_barrowed == False %}
+       <td>
+           <h4>
+        <form action="{%url 'barrow' book.BookName%}" method="post">
+          {% csrf_token %}
+          {{form.as_p}}
+          <button type="submit">BARROW</button>
+        </form>
+           </h4>
+  </td>
+       {%elif user is not None and book.Is_barrowed == True%}
+           <td style="color:#023047"><h4>Barrowed</h4></td>
+       {%endif%}
+
+      </td>
+   </tr>
+    {% endfor %}
+</table>
+
+
+{%endblock%}
